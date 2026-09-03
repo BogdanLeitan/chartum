@@ -1,0 +1,57 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text-2);
+  cursor: pointer;
+  flex: none;
+}
+
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.page-header svg {
+  width: 15px;
+  height: 15px;
+  color: var(--text-2);
+}
+
+.page-header .icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.page-header h2 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.show-feed-btn {
+  display: none;
+}
+
+.app.feed-collapsed .show-feed-btn {
+  display: flex;
+}
+
+.show-feed-btn {
+  display: none;
+}
