@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Header from "../components/Header/Header";
 import "./MainLayouts.css"
 
-function MainLayout({ children }: any) {
+function MainLayout() {
   return (
     <>
       <div className="app">
@@ -12,7 +13,7 @@ function MainLayout({ children }: any) {
           <Header />
 
           <div className="content">
-            {children}
+            <Outlet />
           </div>
         </div>
       </div>

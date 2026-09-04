@@ -5,7 +5,9 @@ function Sidebar() {
     <>
       <aside className="sidebar" id="sidebar">
         <div className="sidebar-top">
-          <div className="logo">CHARTUM</div>
+          <div className="logo">
+            Chartum
+          </div>
 
           <label className="quick-access" htmlFor="command-open">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.4" /><path d="m19.2 19.2-3.6-3.6" /><path d="M18.2 3.4 19.1 5.6 21.3 6.5 19.1 7.4 18.2 9.6 17.3 7.4 15.1 6.5 17.3 5.6Z" /></svg>
@@ -61,10 +63,6 @@ function Sidebar() {
           <label className="nav-item">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M9.5 9a2.5 2.5 0 1 1 3.4 2.34c-.7.28-.9.83-.9 1.66M12 17h.01" /></svg>
             Help &amp; support
-          </label>
-          <label className="nav-item">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" /></svg>
-            Profile
           </label>
           <label className="nav-item">
             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M9 4v16M15 10l-2 2 2 2" /></svg>
