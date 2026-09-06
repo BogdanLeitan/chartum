@@ -22,7 +22,7 @@ html, body {
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  background: #171615;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }

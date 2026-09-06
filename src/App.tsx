@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import MainLayout from './layouts/MainLayout'
-import Portofolio from './pages/Portofolio/Portofolio'
+import NewChat from './pages/NewChat/NewChat'
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
-            <Route path="/" element={} />
+            <Route path="/" element={<NewChat />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,73 +1,123 @@
 import "./Sidebar.css"
+import logo from "../../assets/logo5.png"
+import profil from "../../assets/profil.png"
 
 function Sidebar() {
   return (
     <>
       <aside className="sidebar" id="sidebar">
-        <div className="sidebar-top">
-          <div className="logo">
-            Chartum
+        <div className="topbar">
+          <button className="icon-btn" aria-label="logo">
+            <img src={logo} className="logo" alt="" />
+          </button>
+          <div className="topbar-right">
+            <button className="icon-btn" aria-label="search">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="21" y1="21" x2="16.2" y2="16.2" />
+              </svg>
+            </button>
+            <button className="icon-btn" aria-label="toggle sidebar">
+              <svg width="16" height="15" viewBox="0 0 20 18" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="1" y="1" width="18" height="16" rx="3" />
+                <line x1="7.3" y1="1.6" x2="7.3" y2="16.4" />
+              </svg>
+            </button>
           </div>
-
-          <label className="quick-access" htmlFor="command-open">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.4" /><path d="m19.2 19.2-3.6-3.6" /><path d="M18.2 3.4 19.1 5.6 21.3 6.5 19.1 7.4 18.2 9.6 17.3 7.4 15.1 6.5 17.3 5.6Z" /></svg>
-            <span>Quick access</span>
-            <kbd>⌘K</kbd>
-          </label>
-
-          <nav className="nav">
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" /></svg>
-              Home
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /></svg>
-              Calendar
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-              Search
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" /><path d="M14 3v5h5M9 13h6M9 17h4" /></svg>
-              Transcripts
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z" /></svg>
-              Chat
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16" /><path d="m7 14 3.5-4.5 3 2.5L20 6" /></svg>
-              Charting
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 8h8M8 12h8M8 16h4" /></svg>
-              DCF
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16l-7-4-7 4V5a2 2 0 0 1 2-2z" /></svg>
-              Topics
-            </label>
-            <label className="nav-item">
-              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z" /><circle cx="12" cy="12" r="2.5" /></svg>
-              Watchlists
-            </label>
-          </nav>
         </div>
 
-        <div className="sidebar-bottom">
-          <label className="nav-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
-            Release notes
-          </label>
-          <label className="nav-item">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M9.5 9a2.5 2.5 0 1 1 3.4 2.34c-.7.28-.9.83-.9 1.66M12 17h.01" /></svg>
-            Help &amp; support
-          </label>
-          <label className="nav-item">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M9 4v16M15 10l-2 2 2 2" /></svg>
-            Collapse sidebar
-          </label>
+        <nav className="nav">
+
+          <a className="nav-item">
+            <span className="new-plus">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <line x1="12" y1="4" x2="12" y2="20" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+              </svg>
+            </span>
+            New
+          </a>
+
+          <a className="nav-item">
+            <span className="ico">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bar-chart" viewBox="0 0 16 16">
+                <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z" />
+              </svg>
+            </span>
+            Insights
+          </a>
+
+          <a className="nav-item active">
+            <span className="ico">
+              <svg fill="#c4c3c6" width="1000px" height="1000px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <title>graph</title>
+                <path d="M0 25.406h22.406v-1.75h-20.656v-17.063h-1.75v18.813zM3.063 21.969h19.25v-13.813l-4.063 3.719-3.781-1.375-4 4.563-4.094-1.469-3.313 3.438v4.938z"></path>
+              </svg>
+            </span>
+            Charting
+          </a>
+
+          <a className="nav-item">
+            <span className="ico">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5" />
+                <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" />
+              </svg>
+            </span>
+            Tarnscripts
+          </a>
+
+          <a className="nav-item">
+            <span className="ico">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+              </svg>
+            </span>
+            Calendar
+          </a>
+
+          <a className="nav-item">
+            <span className="ico">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-calculator" viewBox="0 0 16 16">
+                <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+              </svg>
+            </span>
+            DCF Calculator
+          </a>
+
+          <div className="section-gap"></div>
+
+          <a className="nav-item plain">
+            Projects
+            <span className="chev">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </span>
+          </a>
+
+          <a className="nav-item plain">
+            Chats and tasks
+            <span className="chev">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </span>
+          </a>
+
+        </nav>
+
+        <div className="spacer"></div>
+
+        <div className="divider"></div>
+
+        <div className="user-row">
+          <img src={profil} className="profil" alt="" />
+          <div className="user-meta">
+            <div className="user-name">Leitan Bogdan</div>
+            <div className="user-plan">Free plan</div>
+          </div>
         </div>
       </aside>
     </>
