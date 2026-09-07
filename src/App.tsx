@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
 import MainLayout from './layouts/MainLayout'
 import NewChat from './pages/NewChat/NewChat'
+import Insights from './pages/Insights/Insights'
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<NewChat />} />
+            <Route path="/insights" element={<Insights />} />
           </Route>
         </Routes>
       </BrowserRouter>

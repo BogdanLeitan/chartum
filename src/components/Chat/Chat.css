@@ -1,0 +1,227 @@
+/* Search Input Box */
+.search-box {
+    width: 100%;
+    background-color: #d1d0ce09;
+    border: 1px solid #d6d5d412;
+    border-radius: 16px;
+    padding: 16px 16px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.textarea-container textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e3e3e3;
+    font-size: 16px;
+    resize: none;
+    height: 48px;
+}
+
+.textarea-container textarea::placeholder {
+    color: #706f73;
+}
+
+/* Actions & Controls Bar */
+.controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left-controls,
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: #8e8d91;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-pill,  .btn-pill2{
+    color: #c4c3c6;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.btn-pill2 {
+    background: #d1d0ce09;
+    border: 1px solid #d6d5d412;
+}
+
+/* Dropdown CSS Hack Logic */
+.model-dropdown-container {
+    position: relative;
+}
+
+/* Ascunde input-urile de tip radio și checkbox */
+.toggle-checkbox,
+.model-radio {
+    display: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 280px;
+    background: #222120;
+    border: 1px solid #d6d5d412;
+    border-radius: 12px;
+    padding: 6px;
+    z-index: 100;
+    margin-top: 4px;
+}
+
+/* Afișare meniu când checkbox-ul este bifați */
+.toggle-checkbox:checked~.dropdown-menu {
+    display: block;
+}
+
+/* Meniu Header */
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    color: #00a896;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid #d6d5d412;
+    margin-bottom: 4px;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+/* CSS Radio selection display hack */
+.selected-text::after {
+    content: "Model";
+}
+
+#m1:checked~.search-box .selected-text::after {
+    content: "Sonar 2";
+}
+
+#m2:checked~.search-box .selected-text::after {
+    content: "GPT-5.6 Terra";
+}
+
+#m3:checked~.search-box .selected-text::after {
+    content: "GPT-5.6 Sol";
+}
+
+#m4:checked~.search-box .selected-text::after {
+    content: "Gemini 3.8 Flash";
+}
+
+#m5:checked~.search-box .selected-text::after {
+    content: "Claude Sonnet 5";
+}
+
+#m6:checked~.search-box .selected-text::after {
+    content: "Claude Opus 5";
+}
+
+#m7:checked~.search-box .selected-text::after {
+    content: "Kimi K3";
+}
+
+#m8:checked~.search-box .selected-text::after {
+    content: "GLM 5.3";
+}
+
+#m9:checked~.search-box .selected-text::after {
+    content: "Grok 4.6";
+}
+
+#m10:checked~.search-box .selected-text::after {
+    content: "Nemotron 3 Ultra";
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #8e8d91;
+    font-size: 13px;
+}
+
+.menu-item:hover {
+    background-color: #232029;
+    color: #e3e3e3;
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: #27242e;
+    color: #8e8d91;
+}
+
+.badge.new {
+    color: #00a896;
+    background: rgba(0, 168, 150, 0.15);
+}
+
+.icon-btn-submit {
+    background: #e3e3e3;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #100e12;
+    cursor: pointer;
+}
+
+/* Overlay invizibil pentru a închide meniul la click în exterior */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 90;
+}
+
+.toggle-checkbox:checked~.menu-overlay {
+    display: block;
+}

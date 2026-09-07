@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Search Bar styling */
+.search-container2 {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 50px;
+    margin-bottom: 80px;
+}
+
+.search-icon-left {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a7a7a7;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon-right {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a7a7a7;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 100%;
+    height: 50px;
+    padding: 9px 38px 9px 36px;
+    font-size: 13px;
+    background-color: #d1d0ce09;
+    border: 1px solid #d6d5d412;
+    border-radius: 10px;
+    outline: none;
+    color: #c9c9c9;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-input::placeholder {
+    color: #a7a7a7;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.search-input:focus {
+    border-color: #444444;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.main-container2 {
+    width: 1250px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tabs-wrapper {
+    position: relative;
+    border-bottom: 2px solid #5c5c5c;
+    margin-top: 16px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tabs-list {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.tabs-list::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-radio {
+    display: none;
+}
+
+.tab-label {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #cecece;
+    cursor: pointer;
+    user-select: none;
+    border-top: 2px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    background-color: transparent;
+    transition: color 0.15s ease, background-color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tab-label:hover {
+    color: #0f172a;
+}
+
+/* Pure CSS active tab switching */
+.tab-radio:checked+.tab-label {
+    color: #b8b8b8;
+    font-weight: 600;
+    background-color: #d1d0ce09;
+    border-bottom: 2px solid #2e2e2e;
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.expand-button {
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.expand-button:hover {
+    color: #0f172a;
+}
+
+.stock-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.stock-card {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: #d1d0ce09;
+    border-radius: 8px;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.stock-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    border-color: #cbd5e1;
+}
+
+.card-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+    padding-right: 6px;
+}
+
+.logo-box {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stock-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.ticker {
+    font-size: 13px;
+    font-weight: 700;
+    color: #a7a7a7;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.company-name {
+    font-size: 11px;
+    color: #a0a1a1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.market-cap {
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.25;
+}
+
+.card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    gap: 4px;
+}
+
+.price {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.badge-positive {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.badge-negative {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Custom brand styling fallbacks for SVG icons */
+.icon-svg {
+    width: 24px;
+    height: 24px;
+}
