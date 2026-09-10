@@ -1,227 +1,336 @@
-/* Search Input Box */
-.search-box {
-    width: 100%;
-    background-color: #d1d0ce09;
-    border: 1px solid #d6d5d412;
-    border-radius: 16px;
-    padding: 16px 16px 12px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+/* ============================================================
+   ASK BOX (home + follow-up)
+   ============================================================ */
+.model-radio,
+.dd-toggle,
+.mode-switch input {
+    display: none;
 }
 
-.textarea-container textarea {
+.ask-box {
+    width: 638px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 14px 14px 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color .15s ease;
+}
+
+.ask-box:focus-within {
+    border-color: var(--border-strong);
+}
+
+.ask-input {
     width: 100%;
     background: transparent;
     border: none;
     outline: none;
-    color: #e3e3e3;
-    font-size: 16px;
     resize: none;
-    height: 48px;
+    color: var(--text-1);
+    font-size: 15.5px;
+    line-height: 1.5;
+    height: 52px;
 }
 
-.textarea-container textarea::placeholder {
-    color: #706f73;
+.ask-input::placeholder {
+    color: var(--text-3);
 }
 
-/* Actions & Controls Bar */
-.controls-bar {
+.ask-controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-}
-
-.left-controls,
-.right-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-icon {
-    background: transparent;
-    border: none;
-    color: #8e8d91;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.btn-pill,  .btn-pill2{
-    color: #c4c3c6;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-}
-
-.btn-pill2 {
-    background: #d1d0ce09;
-    border: 1px solid #d6d5d412;
-}
-
-/* Dropdown CSS Hack Logic */
-.model-dropdown-container {
-    position: relative;
-}
-
-/* Ascunde input-urile de tip radio și checkbox */
-.toggle-checkbox,
-.model-radio {
-    display: none;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    width: 280px;
-    background: #222120;
-    border: 1px solid #d6d5d412;
-    border-radius: 12px;
-    padding: 6px;
-    z-index: 100;
-    margin-top: 4px;
-}
-
-/* Afișare meniu când checkbox-ul este bifați */
-.toggle-checkbox:checked~.dropdown-menu {
-    display: block;
-}
-
-/* Meniu Header */
-.menu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 12px;
-    color: #00a896;
-    font-size: 13px;
-    font-weight: 500;
-    border-bottom: 1px solid #d6d5d412;
-    margin-bottom: 4px;
-}
-
-.menu-list {
-    display: flex;
-    flex-direction: column;
-    max-height: 320px;
-    overflow-y: auto;
-}
-
-/* CSS Radio selection display hack */
-.selected-text::after {
-    content: "Model";
-}
-
-#m1:checked~.search-box .selected-text::after {
-    content: "Sonar 2";
-}
-
-#m2:checked~.search-box .selected-text::after {
-    content: "GPT-5.6 Terra";
-}
-
-#m3:checked~.search-box .selected-text::after {
-    content: "GPT-5.6 Sol";
-}
-
-#m4:checked~.search-box .selected-text::after {
-    content: "Gemini 3.8 Flash";
-}
-
-#m5:checked~.search-box .selected-text::after {
-    content: "Claude Sonnet 5";
-}
-
-#m6:checked~.search-box .selected-text::after {
-    content: "Claude Opus 5";
-}
-
-#m7:checked~.search-box .selected-text::after {
-    content: "Kimi K3";
-}
-
-#m8:checked~.search-box .selected-text::after {
-    content: "GLM 5.3";
-}
-
-#m9:checked~.search-box .selected-text::after {
-    content: "Grok 4.6";
-}
-
-#m10:checked~.search-box .selected-text::after {
-    content: "Nemotron 3 Ultra";
-}
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 9px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #8e8d91;
-    font-size: 13px;
-}
-
-.menu-item:hover {
-    background-color: #232029;
-    color: #e3e3e3;
-}
-
-.item-left {
-    display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-.badge {
-    font-size: 10px;
-    padding: 1px 5px;
-    border-radius: 4px;
-    background: #27242e;
-    color: #8e8d91;
+.ask-left,
+.ask-right {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
-.badge.new {
-    color: #00a896;
-    background: rgba(0, 168, 150, 0.15);
-}
-
-.icon-btn-submit {
-    background: #e3e3e3;
-    border: none;
-    border-radius: 50%;
+.round-btn {
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #100e12;
-    cursor: pointer;
+    border-radius: 50%;
+    color: var(--text-3);
+    transition: background .12s ease, color .12s ease;
 }
 
-/* Overlay invizibil pentru a închide meniul la click în exterior */
-.menu-overlay {
+.round-btn:hover {
+    background: var(--bg-pill);
+    color: var(--text-1);
+}
+
+/* Mode dropdown: Search / Research / Finance (same pattern as model selector) */
+.mode-btn {
+    border: 1px solid var(--border-soft);
+    background: rgba(255, 255, 255, .03);
+}
+
+.mode-current::after {
+    content: "Search";
+}
+
+#mode-search:checked~.ask-box .mode-current::after {
+    content: "Search";
+}
+
+#mode-research:checked~.ask-box .mode-current::after {
+    content: "Research";
+}
+
+#mode-finance:checked~.ask-box .mode-current::after {
+    content: "Finance";
+}
+
+#mode-search:checked~.ask-box label[for="mode-search"],
+#mode-research:checked~.ask-box label[for="mode-research"],
+#mode-finance:checked~.ask-box label[for="mode-finance"] {
+    color: var(--text-1);
+    background: #2b2927;
+}
+
+.mode-ico {
+    display: none;
+    align-items: center;
+}
+
+#mode-search:checked~.ask-box .mode-ico.i-search,
+#mode-research:checked~.ask-box .mode-ico.i-research,
+#mode-finance:checked~.ask-box .mode-ico.i-finance {
+    display: flex;
+}
+
+.dd-menu.left {
+    left: 0;
+    right: auto;
+}
+
+.dd-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.dd-text small {
+    font-size: 11px;
+    color: var(--text-3);
+}
+
+.dd-item .dd-ico {
+    color: var(--text-3);
+    flex-shrink: 0;
+    display: flex;
+}
+
+/* Model dropdown (checkbox hack) */
+.model-dd {
+    position: relative;
+}
+
+.model-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: background .12s ease, color .12s ease;
+}
+
+.model-btn:hover {
+    background: var(--bg-pill);
+    color: var(--text-1);
+}
+
+.dd-overlay {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     z-index: 90;
 }
 
-.toggle-checkbox:checked~.menu-overlay {
+.dd-toggle:checked~.dd-overlay {
     display: block;
+}
+
+.dd-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    width: 288px;
+    background: #232120;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 6px;
+    z-index: 100;
+}
+
+.dd-toggle:checked~.dd-menu {
+    display: block;
+}
+
+.dd-menu.drop-down {
+    bottom: auto;
+    top: calc(100% + 8px);
+}
+
+.dd-head {
+    padding: 9px 12px 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.dd-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 11px;
+    border-radius: 9px;
+    cursor: pointer;
+    color: var(--text-2);
+    font-size: 13px;
+    transition: background .12s ease, color .12s ease;
+}
+
+.dd-item:hover {
+    background: #2b2927;
+    color: var(--text-1);
+}
+
+.dd-item .dd-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.dd-item .model-logo {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.dd-item .lock {
+    color: var(--text-3);
+    flex-shrink: 0;
+}
+
+.model-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.d-openai {
+    background: #74aa9c;
+}
+
+.d-gemini {
+    background: #4796e3;
+}
+
+.d-claude {
+    background: #d97757;
+}
+
+.d-kimi {
+    background: #2f7cff;
+}
+
+.d-grok {
+    background: #c8c8c8;
+}
+
+.dd-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1.5px 6px;
+    border-radius: 5px;
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+/* Selected model name — CSS radio hack */
+.model-current::after {
+    content: "Chartum One";
+}
+
+#m1:checked~.ask-box .model-current::after {
+    content: "Chartum One";
+}
+
+#m2:checked~.ask-box .model-current::after {
+    content: "GPT-5.6 Terra";
+}
+
+#m3:checked~.ask-box .model-current::after {
+    content: "GPT-5.6 Sol";
+}
+
+#m4:checked~.ask-box .model-current::after {
+    content: "Gemini 3.8 Flash";
+}
+
+#m5:checked~.ask-box .model-current::after {
+    content: "Claude Sonnet 5";
+}
+
+#m6:checked~.ask-box .model-current::after {
+    content: "Claude Opus 5";
+}
+
+#m7:checked~.ask-box .model-current::after {
+    content: "Kimi K3";
+}
+
+#m8:checked~.ask-box .model-current::after {
+    content: "Grok 4.6";
+}
+
+/* Checkmark next to the active model */
+#m1:checked~.ask-box label[for="m1"],
+#m2:checked~.ask-box label[for="m2"],
+#m3:checked~.ask-box label[for="m3"],
+#m4:checked~.ask-box label[for="m4"],
+#m5:checked~.ask-box label[for="m5"],
+#m6:checked~.ask-box label[for="m6"],
+#m7:checked~.ask-box label[for="m7"],
+#m8:checked~.ask-box label[for="m8"] {
+    color: var(--text-1);
+    background: #2b2927;
+}
+
+.send-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #d9d9d9;
+    color: #141414;
+    transition: background .12s ease, transform .12s ease;
+}
+
+.send-btn:hover {
+    background: #f0f0f0;
+    transform: translateY(-1px);
 }

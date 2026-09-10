@@ -1,28 +1,803 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* ============================================================
+   CHARTUM — shared stylesheet
+   Warm-dark research UI. Neutral gray accent, FK Grotesk-adjacent UI type.
+   Dropdowns, radios, and sidebar collapse are CSS-only.
+   ============================================================ */
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import './pages/NewChat/NewChat.css';
+@import './pages/Insights/Insights.css';
+@import './static.css';
 
-:root {
-  --bg: #ffffff;
-  --bg-subtle: #f6f6f5;
-  --bg-hover: #ededeb;
-  --border: #ececea;
-  --border-strong: #e2e2e0;
-  --text: #1a1a1a;
-  --text-2: #6f6f6c;
-  --text-3: #9b9b97;
-  --sidebar: 212px;
-  --feed: 340px;
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
+html,
+body,
+#root {
   height: 100%;
-  overflow: hidden;
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #171615;
-  color: var(--text);
+  font-family: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-1);
   -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+::selection {
+  background: rgba(255, 255, 255, .18);
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  --bg-page: #1a1918;
+  --bg-deep: #151413;
+  --bg-card: #211f1d;
+  --bg-card-hover: #262422;
+  --bg-input: #232120;
+  --bg-pill: #2b2927;
+
+  --border-soft: rgba(255, 255, 255, .06);
+  --border: rgba(255, 255, 255, .09);
+  --border-strong: rgba(255, 255, 255, .14);
+
+  --text-1: #ece9e2;
+  --text-2: #b0aca3;
+  --text-3: #837f77;
+
+  --accent: #e8e8e8;
+  --accent-bright: #f5f5f5;
+  --accent-soft: rgba(255, 255, 255, .07);
+  --accent-border: rgba(255, 255, 255, .14);
+
+  --teal: #5fb8a6;
+  --teal-soft: rgba(95, 184, 166, .13);
+
+  --up: #55c586;
+  --up-bg: rgba(85, 197, 134, .12);
+  --down: #e06a52;
+  --down-bg: rgba(224, 106, 82, .12);
+
+  --r-lg: 18px;
+  --r-md: 12px;
+  --r-sm: 8px;
+
+  --page-gutter: 26px;
+  --page-max: 1320px;
+
+  --serif: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --grotesk: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- Scrollbars ---------- */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #33312e;
+  border-radius: 8px;
+  border: 2px solid var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #44413e;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #33312e transparent;
+}
+
+/* ---------- App shell ---------- */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-page);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  --sidebar-width: 264px;
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--bg-deep);
+  border-right: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: width .18s ease, padding .18s ease;
+}
+
+.sidebar-collapse-cb {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.sidebar-toggle {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand img {
+  width: 26px;
+  height: 26px;
+}
+
+.brand-name {
+  font-family: var(--grotesk);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--text-1);
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease;
+}
+
+.icon-btn:hover {
+  background: var(--bg-pill);
+  color: var(--text-1);
+}
+
+.icon-btn svg {
+  overflow: visible;
+}
+
+.new-thread {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 36px;
+  margin: 0 0 8px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-2);
+  font-weight: 500;
+  font-size: 13.5px;
+  transition: background .12s ease, color .12s ease;
+}
+
+.new-thread-ico {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: visible;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.new-thread:hover {
+  background: #1f1e1c;
+  color: var(--text-1);
+}
+
+.new-thread:hover .new-thread-ico {
+  background: rgba(255, 255, 255, .11);
+  border-color: var(--border-strong);
+  color: var(--text-1);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.side-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: background .12s ease, color .12s ease;
+}
+
+.side-item svg {
+  flex-shrink: 0;
+  overflow: visible;
+  color: var(--text-3);
+  transition: color .12s ease;
+}
+
+.side-item:hover {
+  background: #1f1e1c;
+  color: var(--text-1);
+}
+
+.side-item:hover svg {
+  color: var(--text-2);
+}
+
+.side-item.active {
+  background: #24221f;
+  color: var(--text-1);
+}
+
+.side-item.active svg {
+  color: var(--accent);
+}
+
+.side-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.side-ico svg {
+  display: block;
+  overflow: visible;
+}
+
+.new-thread-ico .side-ico {
+  width: 12px;
+  height: 12px;
+}
+
+.mini-add .side-ico {
+  width: 12px;
+  height: 12px;
+}
+
+.side-section {
+  margin-top: 20px;
+}
+
+.side-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.mini-add {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-3);
+}
+
+.mini-add:hover {
+  background: var(--bg-pill);
+  color: var(--text-1);
+}
+
+.mini-add svg {
+  overflow: visible;
+}
+
+.recent-item {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background .12s ease, color .12s ease;
+}
+
+.recent-item:hover {
+  background: #1f1e1c;
+  color: var(--text-1);
+}
+
+.side-bottom {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px 2px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.user-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-plan {
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+
+/* ============================================================
+   PAGE HEADER (Insights / Discover / Stock)
+   ============================================================ */
+.page-head {
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 calc((100% - min(100%, var(--page-max))) / 2 + var(--page-gutter));
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.ph-title {
+  font-family: var(--grotesk);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-1);
+  white-space: nowrap;
+}
+
+.ph-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ph-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.ph-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-3);
+  white-space: nowrap;
+  transition: color .12s ease;
+}
+
+.ph-link:hover {
+  color: var(--text-1);
+}
+
+.ph-link.active {
+  color: var(--text-1);
+}
+
+.ph-link.active::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+}
+
+.ph-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+/* ============================================================
+   SHARED SMALL COMPONENTS
+   ============================================================ */
+.chg {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.chg.up {
+  color: var(--up);
+  background: var(--up-bg);
+}
+
+.chg.down {
+  color: var(--down);
+  background: var(--down-bg);
+}
+
+.delta {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.delta.up {
+  color: var(--up);
+}
+
+.delta.down {
+  color: var(--down);
+}
+
+/* Monogram tiles (replace mismatched brand SVGs from the old project) */
+.tile {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--grotesk);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.tile.sm {
+  width: 30px;
+  height: 30px;
+  font-size: 11px;
+  border-radius: 8px;
+}
+
+.tile.lg {
+  width: 52px;
+  height: 52px;
+  font-size: 17px;
+  border-radius: 14px;
+}
+
+.t-green {
+  background: #1f312a;
+  color: #7fd0a5;
+}
+
+.t-blue {
+  background: #20303c;
+  color: #7db8dd;
+}
+
+.t-purple {
+  background: #2c2839;
+  color: #ab9ce0;
+}
+
+.t-rust {
+  background: #382a24;
+  color: #e0a183;
+}
+
+.t-gold {
+  background: #35301f;
+  color: #d8c076;
+}
+
+.t-slate {
+  background: #2a2d31;
+  color: #a9b4bd;
+}
+
+.t-rose {
+  background: #362630;
+  color: #d795b4;
+}
+
+.t-teal {
+  background: #1e3331;
+  color: #7cc9bd;
+}
+
+/* Citation chips */
+.cite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  margin: 0 1px;
+  border-radius: 5px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-size: 10.5px;
+  font-weight: 600;
+  vertical-align: 2px;
+  cursor: pointer;
+  transition: background .12s ease;
+}
+
+.cite:hover {
+  background: rgba(95, 184, 166, .25);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1240px) {
+  .sidebar {
+    --sidebar-width: 228px;
+  }
+}
+
+@media (max-width: 980px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* ============================================================
+   SIDEBAR — collapsed icon rail (Perplexity-style)
+   Toggled by the top-right panel button / #sidebar-collapsed
+   ============================================================ */
+html.sidebar-collapsed .sidebar,
+.sidebar:has(.sidebar-collapse-cb:checked) {
+  --sidebar-width: 56px;
+  padding: 12px 6px 10px;
+  align-items: center;
+}
+
+html.sidebar-collapsed .brand-row,
+.sidebar:has(.sidebar-collapse-cb:checked) .brand-row {
+  justify-content: center;
+  padding: 2px 0 10px;
+}
+
+html.sidebar-collapsed .sidebar .sidebar-toggle,
+.sidebar:has(.sidebar-collapse-cb:checked) .sidebar-toggle {
+  display: none;
+}
+
+html.sidebar-collapsed .new-thread,
+.sidebar:has(.sidebar-collapse-cb:checked) .new-thread {
+  justify-content: center;
+  width: 40px;
+  padding: 0;
+  margin: 0 0 6px;
+  gap: 0;
+}
+
+html.sidebar-collapsed .new-thread>span:not(.new-thread-ico),
+.sidebar:has(.sidebar-collapse-cb:checked) .new-thread>span:not(.new-thread-ico) {
+  display: none;
+}
+
+html.sidebar-collapsed .side-nav,
+.sidebar:has(.sidebar-collapse-cb:checked) .side-nav {
+  width: 100%;
+  align-items: center;
+}
+
+html.sidebar-collapsed .side-item,
+.sidebar:has(.sidebar-collapse-cb:checked) .side-item {
+  justify-content: center;
+  width: 40px;
+  padding: 0;
+  gap: 0;
+  font-size: 0;
+  color: transparent;
+}
+
+html.sidebar-collapsed .side-label,
+html.sidebar-collapsed .side-section:has(.recent-item),
+.sidebar:has(.sidebar-collapse-cb:checked) .side-label,
+.sidebar:has(.sidebar-collapse-cb:checked) .side-section:has(.recent-item) {
+  display: none;
+}
+
+html.sidebar-collapsed .side-section,
+.sidebar:has(.sidebar-collapse-cb:checked) .side-section {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html.sidebar-collapsed .side-bottom,
+.sidebar:has(.sidebar-collapse-cb:checked) .side-bottom {
+  width: 100%;
+  padding-top: 12px;
+}
+
+html.sidebar-collapsed .user-row,
+.sidebar:has(.sidebar-collapse-cb:checked) .user-row {
+  justify-content: center;
+  gap: 0;
+  padding: 8px 0 2px;
+  border-top: none;
+}
+
+html.sidebar-collapsed .user-meta,
+html.sidebar-collapsed .user-row>.icon-btn,
+.sidebar:has(.sidebar-collapse-cb:checked) .user-meta,
+.sidebar:has(.sidebar-collapse-cb:checked) .user-row>.icon-btn {
+  display: none;
+}
+
+/* ============================================================
+   MAIN HEADER TOOLS — incognito + menu (top right); panel toggle (left, collapsed)
+   ============================================================ */
+.head-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.head-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+
+.head-icon-btn:hover {
+  background: var(--bg-pill);
+  color: var(--text-1);
+  border-color: var(--border-strong);
+}
+
+.header-sidebar-toggle {
+  display: none;
+}
+
+html.sidebar-collapsed .header-sidebar-toggle,
+.app:has(.sidebar-collapse-cb:checked) .header-sidebar-toggle {
+  display: flex;
+}
+
+.home-head {
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border: none;
+  background: transparent;
+}
+
+.page-head .header-sidebar-toggle,
+.thread-bar .header-sidebar-toggle {
+  margin-right: 8px;
 }
