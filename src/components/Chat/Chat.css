@@ -1,6 +1,3 @@
-/* ============================================================
-   ASK BOX (home + follow-up)
-   ============================================================ */
 .model-radio,
 .dd-toggle,
 .mode-switch input {
@@ -9,6 +6,7 @@
 
 .ask-box {
     width: 638px;
+    max-width: 100%;
     background: var(--bg-input);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
@@ -72,7 +70,7 @@
 /* Mode dropdown: Search / Research / Finance (same pattern as model selector) */
 .mode-btn {
     border: 1px solid var(--border-soft);
-    background: rgba(255, 255, 255, .03);
+    background: var(--ink-faint);
 }
 
 .mode-current::after {
@@ -95,7 +93,7 @@
 #mode-research:checked~.ask-box label[for="mode-research"],
 #mode-finance:checked~.ask-box label[for="mode-finance"] {
     color: var(--text-1);
-    background: #2b2927;
+    background: var(--hover);
 }
 
 .mode-ico {
@@ -172,7 +170,7 @@
     right: 0;
     bottom: calc(100% + 8px);
     width: 288px;
-    background: #232120;
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 6px;
@@ -210,7 +208,7 @@
 }
 
 .dd-item:hover {
-    background: #2b2927;
+    background: var(--hover);
     color: var(--text-1);
 }
 
@@ -315,7 +313,7 @@
 #m7:checked~.ask-box label[for="m7"],
 #m8:checked~.ask-box label[for="m8"] {
     color: var(--text-1);
-    background: #2b2927;
+    background: var(--hover);
 }
 
 .send-btn {
@@ -325,12 +323,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #d9d9d9;
-    color: #141414;
+    background: var(--send-bg);
+    color: var(--send-fg);
     transition: background .12s ease, transform .12s ease;
 }
 
 .send-btn:hover {
-    background: #f0f0f0;
+    background: var(--send-hover);
     transform: translateY(-1px);
 }

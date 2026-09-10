@@ -6,8 +6,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 @import './pages/NewChat/NewChat.css';
-@import './pages/Insights/Insights.css';
+@import './extensions/Insights/Insights.css';
 @import './static.css';
+@import './pages/Landing/Landing.css';
 
 /* ---------- Reset ---------- */
 * {
@@ -68,6 +69,8 @@ ol {
   --bg-card-hover: #262422;
   --bg-input: #232120;
   --bg-pill: #2b2927;
+  --hover: #1f1e1c;
+  --active: #24221f;
 
   --border-soft: rgba(255, 255, 255, .06);
   --border: rgba(255, 255, 255, .09);
@@ -81,6 +84,14 @@ ol {
   --accent-bright: #f5f5f5;
   --accent-soft: rgba(255, 255, 255, .07);
   --accent-border: rgba(255, 255, 255, .14);
+
+  --ink-faint: rgba(255, 255, 255, .07);
+  --ink-faint-hover: rgba(255, 255, 255, .11);
+  --row-hover: rgba(255, 255, 255, .03);
+  --scroll-thumb: #33312e;
+  --send-bg: #d9d9d9;
+  --send-fg: #141414;
+  --send-hover: #f0f0f0;
 
   --teal: #5fb8a6;
   --teal-soft: rgba(95, 184, 166, .13);
@@ -99,6 +110,54 @@ ol {
 
   --serif: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --grotesk: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  color-scheme: dark;
+}
+
+html:has(#theme-light:checked) {
+  --bg-page: #f7f6f3;
+  --bg-deep: #271a0009;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f3ef;
+  --bg-input: #ffffff;
+  --bg-pill: #eceae4;
+  --hover: #eceae4;
+  --active: #e6e3dc;
+
+  --border-soft: rgba(28, 27, 25, .06);
+  --border: rgba(28, 27, 25, .10);
+  --border-strong: rgba(28, 27, 25, .16);
+
+  --text-1: #1c1b19;
+  --text-2: #6b6862;
+  --text-3: #9a958c;
+
+  --accent: #1c1b19;
+  --accent-bright: #000000;
+  --accent-soft: rgba(28, 27, 25, .06);
+  --accent-border: rgba(28, 27, 25, .14);
+
+  --ink-faint: rgba(28, 27, 25, .06);
+  --ink-faint-hover: rgba(28, 27, 25, .10);
+  --row-hover: rgba(28, 27, 25, .04);
+  --scroll-thumb: #d0ccc4;
+  --send-bg: #1c1b19;
+  --send-fg: #f7f6f3;
+  --send-hover: #000000;
+
+  --teal: #2f8f7c;
+  --teal-soft: rgba(47, 143, 124, .12);
+
+  --up: #1f8a54;
+  --up-bg: rgba(31, 138, 84, .12);
+  --down: #c24b38;
+  --down-bg: rgba(194, 75, 56, .12);
+
+  color-scheme: light;
+}
+
+html:has(#theme-light:checked) ::selection {
+  background: rgba(28, 27, 25, .12);
 }
 
 /* ---------- Scrollbars ---------- */
@@ -112,18 +171,18 @@ ol {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #33312e;
+  background: var(--scroll-thumb);
   border-radius: 8px;
   border: 2px solid var(--bg-page);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #44413e;
+  background: var(--text-3);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #33312e transparent;
+  scrollbar-color: var(--scroll-thumb) transparent;
 }
 
 /* ---------- App shell ---------- */
@@ -144,6 +203,7 @@ ol {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 /* ============================================================
@@ -163,7 +223,8 @@ ol {
   transition: width .18s ease, padding .18s ease;
 }
 
-.sidebar-collapse-cb {
+.sidebar-collapse-cb,
+.theme-cb {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -192,6 +253,13 @@ ol {
 .brand img {
   width: 26px;
   height: 26px;
+}
+
+.brand-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
 }
 
 .brand-name {
@@ -223,6 +291,11 @@ ol {
   overflow: visible;
 }
 
+.theme-sun { display: flex; }
+.theme-moon { display: none; }
+html:has(#theme-light:checked) .theme-sun { display: none; }
+html:has(#theme-light:checked) .theme-moon { display: flex; }
+
 .new-thread {
   display: flex;
   align-items: center;
@@ -248,19 +321,19 @@ ol {
   justify-content: center;
   border-radius: 50%;
   overflow: visible;
-  background: rgba(255, 255, 255, .07);
+  background: var(--ink-faint);
   border: 1px solid var(--border);
   color: var(--text-2);
   transition: background .12s ease, border-color .12s ease, color .12s ease;
 }
 
 .new-thread:hover {
-  background: #1f1e1c;
+  background: var(--hover);
   color: var(--text-1);
 }
 
 .new-thread:hover .new-thread-ico {
-  background: rgba(255, 255, 255, .11);
+  background: var(--ink-faint-hover);
   border-color: var(--border-strong);
   color: var(--text-1);
 }
@@ -293,7 +366,7 @@ ol {
 }
 
 .side-item:hover {
-  background: #1f1e1c;
+  background: var(--hover);
   color: var(--text-1);
 }
 
@@ -302,7 +375,7 @@ ol {
 }
 
 .side-item.active {
-  background: #24221f;
+  background: var(--active);
   color: var(--text-1);
 }
 
@@ -383,7 +456,7 @@ ol {
 }
 
 .recent-item:hover {
-  background: #1f1e1c;
+  background: var(--hover);
   color: var(--text-1);
 }
 
@@ -573,6 +646,15 @@ ol {
   color: #7fd0a5;
 }
 
+html:has(#theme-light:checked) .t-green { background: #e3f2e9; color: #2a7a52; }
+html:has(#theme-light:checked) .t-blue { background: #e4eef5; color: #2f6f96; }
+html:has(#theme-light:checked) .t-purple { background: #eeeaf6; color: #6a5aa8; }
+html:has(#theme-light:checked) .t-rust { background: #f6ebe6; color: #b56a48; }
+html:has(#theme-light:checked) .t-gold { background: #f4eedc; color: #8a7428; }
+html:has(#theme-light:checked) .t-slate { background: #eceeef; color: #5a656c; }
+html:has(#theme-light:checked) .t-rose { background: #f6e8ef; color: #a85a7a; }
+html:has(#theme-light:checked) .t-teal { background: #e4f1ee; color: #2f7f74; }
+
 .t-blue {
   background: #20303c;
   color: #7db8dd;
@@ -675,8 +757,8 @@ html.sidebar-collapsed .brand-row,
   padding: 2px 0 10px;
 }
 
-html.sidebar-collapsed .sidebar .sidebar-toggle,
-.sidebar:has(.sidebar-collapse-cb:checked) .sidebar-toggle {
+html.sidebar-collapsed .sidebar .brand-tools,
+.sidebar:has(.sidebar-collapse-cb:checked) .brand-tools {
   display: none;
 }
 
