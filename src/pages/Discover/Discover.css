@@ -1,0 +1,316 @@
+/* ============================================================
+   CHARTUM — discover (news feed)
+   ============================================================ */
+
+.disc-radio,
+.topics-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.discover-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 22px var(--page-gutter) 56px;
+}
+
+/* Shared favicon dots */
+.favicon {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #fff;
+}
+.f-orange { background: #c95b28; }
+.f-dark   { background: #3a3a3a; }
+.f-green  { background: #3f7d4e; }
+.f-blue   { background: #33628f; }
+.f-purple { background: #6a5aa8; }
+.f-teal   { background: #2f7f74; }
+
+.story-src {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+
+.g-hero {
+  background:
+    radial-gradient(ellipse 90% 80% at 20% 15%, rgba(160, 165, 175, .28), transparent 55%),
+    radial-gradient(ellipse 80% 90% at 85% 90%, rgba(85, 197, 134, .22), transparent 60%),
+    linear-gradient(150deg, #262320, #17211d);
+}
+.g-1 {
+  background:
+    radial-gradient(ellipse 100% 90% at 15% 10%, rgba(95, 184, 166, .3), transparent 55%),
+    linear-gradient(150deg, #1e2624, #191c22);
+}
+.g-2 {
+  background:
+    radial-gradient(ellipse 100% 90% at 80% 15%, rgba(224, 106, 82, .28), transparent 55%),
+    linear-gradient(150deg, #292019, #1d1a17);
+}
+.g-3 {
+  background:
+    radial-gradient(ellipse 100% 90% at 20% 85%, rgba(171, 156, 224, .26), transparent 55%),
+    linear-gradient(150deg, #232030, #1a191f);
+}
+.g-4 {
+  background:
+    radial-gradient(ellipse 100% 90% at 85% 80%, rgba(150, 160, 170, .26), transparent 55%),
+    linear-gradient(150deg, #272219, #1c1a15);
+}
+.g-5 {
+  background:
+    radial-gradient(ellipse 100% 90% at 15% 15%, rgba(125, 184, 221, .26), transparent 55%),
+    linear-gradient(150deg, #1d2430, #17191e);
+}
+.g-6 {
+  background:
+    radial-gradient(ellipse 100% 90% at 80% 20%, rgba(215, 149, 180, .24), transparent 55%),
+    linear-gradient(150deg, #2a2026, #1c181a);
+}
+.g-7 {
+  background:
+    radial-gradient(ellipse 100% 90% at 70% 30%, rgba(232, 196, 110, .22), transparent 55%),
+    linear-gradient(150deg, #2a2418, #1b1914);
+}
+.g-8 {
+  background:
+    radial-gradient(ellipse 100% 90% at 20% 70%, rgba(110, 168, 150, .24), transparent 55%),
+    linear-gradient(150deg, #1c2422, #161918);
+}
+
+/* Header: title left, For You / Weather / Topics right */
+.discover-head {
+  position: relative;
+  justify-content: center;
+  gap: 0;
+  padding: 0 18px;
+}
+
+.discover-head .ph-title {
+  position: absolute;
+  left: 18px;
+  z-index: 1;
+}
+
+.discover-head .header-sidebar-toggle {
+  position: absolute;
+  left: 18px;
+  z-index: 2;
+  margin-right: 0;
+}
+
+.app:has(.sidebar-collapse-cb:checked) .discover-head .ph-title,
+html.sidebar-collapsed .discover-head .ph-title {
+  left: 54px;
+}
+
+.discover-head .ph-nav {
+  margin-left: 0;
+  justify-content: center;
+}
+.discover-head .ph-link { cursor: pointer; }
+
+#disc-foryou:checked ~ .discover-head label[for="disc-foryou"] {
+  color: var(--text-1);
+}
+#disc-foryou:checked ~ .discover-head label[for="disc-foryou"]::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+}
+
+.topics-dd { position: relative; height: 100%; }
+.topics-btn { gap: 5px; cursor: pointer; }
+.topics-btn svg { color: var(--text-3); }
+.topics-current::after { content: "Topics"; }
+#disc-topic-markets:checked ~ .discover-head .topics-current::after { content: "Markets"; }
+#disc-topic-tech:checked ~ .discover-head .topics-current::after { content: "Tech"; }
+#disc-topic-crypto:checked ~ .discover-head .topics-current::after { content: "Crypto"; }
+#disc-topic-macro:checked ~ .discover-head .topics-current::after { content: "Macro"; }
+#disc-topic-companies:checked ~ .discover-head .topics-current::after { content: "Companies"; }
+
+.topics-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+}
+.topics-toggle:checked ~ .topics-overlay { display: block; }
+.topics-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: 180px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  z-index: 100;
+}
+.topics-toggle:checked ~ .topics-menu { display: block; }
+.topics-item {
+  display: block;
+  padding: 8px 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+.topics-item:hover { background: var(--hover); color: var(--text-1); }
+#disc-topic-all:checked ~ .discover-head label[for="disc-topic-all"],
+#disc-topic-markets:checked ~ .discover-head label[for="disc-topic-markets"],
+#disc-topic-tech:checked ~ .discover-head label[for="disc-topic-tech"],
+#disc-topic-crypto:checked ~ .discover-head label[for="disc-topic-crypto"],
+#disc-topic-macro:checked ~ .discover-head label[for="disc-topic-macro"],
+#disc-topic-companies:checked ~ .discover-head label[for="disc-topic-companies"] {
+  color: var(--text-1);
+  background: var(--hover);
+}
+
+/* For You — Perplexity story layout */
+.disc-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 16px;
+}
+
+.fy-feature {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 36px;
+  align-items: center;
+}
+.fy-feature.reverse { grid-template-columns: 1.05fr 1fr; }
+.fy-photo {
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.fy-photo img,
+.fy-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.fy-title {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.18;
+  color: var(--text-1);
+}
+.fy-title.teal { color: var(--teal); }
+.fy-pub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+.fy-snippet {
+  margin-top: 12px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 42ch;
+}
+.fy-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+.fy-foot .src-stack { display: flex; align-items: center; }
+.fy-foot .src-stack .favicon {
+  margin-left: -6px;
+  border: 2px solid var(--bg-page);
+}
+.fy-foot .src-stack .favicon:first-child { margin-left: 0; }
+.fy-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  color: var(--text-3);
+}
+.fy-card .fy-actions { margin-top: 0; }
+
+.fy-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.fy-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 100%;
+}
+.fy-card:hover { border-color: var(--border); background: var(--bg-card-hover); }
+.fy-card-img { height: 168px; overflow: hidden; }
+.fy-card h3 {
+  padding: 12px 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.35;
+  color: var(--text-1);
+  flex: 1;
+}
+.fy-card .fy-foot {
+  margin: 12px 14px 13px;
+  padding-top: 0;
+}
+.fy-card .src-stack .favicon { border-color: var(--bg-card); }
+.fy-card:hover .src-stack .favicon { border-color: var(--bg-card-hover); }
+
+#disc-topic-markets:checked ~ .content .fy-card:not(.t-markets),
+#disc-topic-markets:checked ~ .content .fy-feature:not(.t-markets),
+#disc-topic-tech:checked ~ .content .fy-card:not(.t-tech),
+#disc-topic-tech:checked ~ .content .fy-feature:not(.t-tech),
+#disc-topic-crypto:checked ~ .content .fy-card:not(.t-crypto),
+#disc-topic-crypto:checked ~ .content .fy-feature:not(.t-crypto),
+#disc-topic-macro:checked ~ .content .fy-card:not(.t-macro),
+#disc-topic-macro:checked ~ .content .fy-feature:not(.t-macro),
+#disc-topic-companies:checked ~ .content .fy-card:not(.t-companies),
+#disc-topic-companies:checked ~ .content .fy-feature:not(.t-companies) {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .fy-feature,
+  .fy-feature.reverse {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .fy-feature.reverse .fy-photo { order: -1; }
+  .fy-title { font-size: 26px; }
+  .fy-trio { grid-template-columns: 1fr; }
+}

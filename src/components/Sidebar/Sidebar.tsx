@@ -1,5 +1,4 @@
 import "./Sidebar.css"
-import logo from "../../assets/logo5.png"
 import profil from "../../assets/profil.png"
 import { Link, NavLink } from "react-router-dom";
 
@@ -8,11 +7,24 @@ function Sidebar() {
     <>
       <aside className="sidebar">
         <input type="checkbox" id="sidebar-collapsed" className="sidebar-collapse-cb" />
-        <input type="checkbox" id="theme-light" className="theme-cb" />
+        <input type="radio" name="theme" id="theme-dark" className="theme-cb" defaultChecked />
+        <input type="radio" name="theme" id="theme-light" className="theme-cb" />
+        <input type="radio" name="theme" id="theme-system" className="theme-cb" />
 
         <div className="brand-row">
-          <Link className="brand" to="/">
-            <img src={logo} alt="Chartum" />
+          <Link className="brand" to="/" aria-label="MindSearch">
+            <svg className="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <g transform="translate(32 32)" fill="currentColor">
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(45)" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(90)" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(135)" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(180)" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(225)" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(270)" />
+                <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(315)" />
+              </g>
+            </svg>
           </Link>
           <div className="brand-tools">
             <button className="icon-btn" type="button" title="Search">
@@ -55,40 +67,6 @@ function Sidebar() {
             Discover
           </Link>
 
-          {/*<Link className="side-item" to="/insights" title="Insights">
-            <span className="side-ico ico-bars">
-              <svg width="18" height="18" viewBox="0 0 24 24">
-                <rect x="3.6" y="13.2" width="4.6" height="7.4" rx="2.2" fill="currentColor" />
-                <rect x="9.7" y="8.2" width="4.6" height="12.4" rx="2.2" fill="currentColor" />
-                <rect x="15.8" y="4.4" width="4.6" height="16.2" rx="2.2" fill="currentColor" />
-              </svg>
-            </span>
-            Insights
-          </Link>
-
-          <Link className="side-item" to="/overview" title="Overview">
-            <span className="side-ico ico-overview">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <rect className="ov-main" x="3.4" y="3.4" width="17.2" height="9.4" rx="2.2" />
-                <rect className="ov-a" x="3.4" y="14.4" width="7.8" height="6.2" rx="2" />
-                <rect className="ov-b" x="12.8" y="14.4" width="7.8" height="6.2" rx="2" />
-                <polyline className="ov-line" points="6 10.4 8.6 8.2 11.1 9.3 14.4 6.4 17.6 8" />
-              </svg>
-            </span>
-            Overview
-          </Link>
-
-          <Link className="side-item" to="/tools" title="Tools">
-            <span className="side-ico ico-tools">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <g className="tool-wrench">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </g>
-              </svg>
-            </span>
-            Tools
-          </Link>*/}
-
           <NavLink className={({ isActive }) => isActive ? "side-item active" : "side-item"} to="/extensions" title="Extensions">
             <span className="side-ico ico-ext">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -96,16 +74,6 @@ function Sidebar() {
               </svg>
             </span>
             Extensions
-          </NavLink>
-
-          <NavLink className={({ isActive }) => isActive ? "side-item active" : "side-item"} to="/settings" title="Settings">
-            <span className="side-ico ico-settings">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-              </svg>
-            </span>
-            Settings
           </NavLink>
         </nav>
 
@@ -143,22 +111,13 @@ function Sidebar() {
         </div>
 
         <div className="side-bottom">
-          <div className="user-row">
-            <img className="avatar" src={profil} alt="Leitan Bogdan" title="Leitan Bogdan" />
+          <label className="user-row" htmlFor="ui-profile" title="Account">
+            <img className="avatar" src={profil} alt="Leitan Bogdan" />
             <div className="user-meta">
               <span className="user-name">Leitan Bogdan</span>
               <span className="user-plan">Free plan</span>
             </div>
-            <label className="icon-btn" htmlFor="theme-light" title="Toggle theme">
-              <svg className="theme-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-              </svg>
-              <svg className="theme-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
-              </svg>
-            </label>
-          </div>
+          </label>
         </div>
       </aside>
     </>

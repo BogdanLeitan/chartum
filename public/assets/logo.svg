@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-  <!-- Chartum: rounded box + isometric cube -->
-  <rect x="1.75" y="1.75" width="28.5" height="28.5" rx="8" stroke="#ece9e2" stroke-width="1.9"/>
-  <path fill="#ece9e2" d="M16 7.3 24.5 12.05 16 16.15 7.5 12.05Z"/>
-  <path fill="#ece9e2" d="M7.5 13 15.35 17.35v8.7L7.5 22.35Z"/>
-  <path fill="#ece9e2" d="M24.5 13 16.65 17.35v8.7l7.85-3.7Z"/>
-</svg>

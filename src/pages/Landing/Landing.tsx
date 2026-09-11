@@ -321,16 +321,13 @@ function Landing() {
               <strong>Product</strong>
               <Link to="/">New chat</Link>
               <Link to="/discover">Discover</Link>
-              <Link to="/insights">Insights</Link>
-              <Link to="/overview">Overview</Link>
-              <Link to="/tools">Tools</Link>
+              <Link to="/extensions">Extensions</Link>
+              <Link to="/settings">Settings</Link>
             </div>
             <div>
               <strong>Extensions</strong>
               <Link to="/extensions">Catalog</Link>
               <a href="#extensions">Library</a>
-              <Link to="/insights">Insights</Link>
-              <Link to="/tools">Tools</Link>
             </div>
             <div>
               <strong>Company</strong>

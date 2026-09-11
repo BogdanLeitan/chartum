@@ -10,7 +10,7 @@
     background: var(--bg-input);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    padding: 14px 14px 11px;
+    padding: 15px 15px 12px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -28,9 +28,9 @@
     outline: none;
     resize: none;
     color: var(--text-1);
-    font-size: 15.5px;
+    font-size: 17px;
     line-height: 1.5;
-    height: 52px;
+    height: 55px;
 }
 
 .ask-input::placeholder {
@@ -52,8 +52,8 @@
 }
 
 .round-btn {
-    width: 32px;
-    height: 32px;
+    width: 33px;
+    height: 33px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,10 +67,13 @@
     color: var(--text-1);
 }
 
-/* Mode dropdown: Search / Research / Finance (same pattern as model selector) */
+/* Mode dropdown: Search / Research / Finance / Academics */
 .mode-btn {
     border: 1px solid var(--border-soft);
     background: var(--ink-faint);
+    padding: 5px 10px;
+    font-size: 13px;
+    gap: 5px;
 }
 
 .mode-current::after {
@@ -89,9 +92,14 @@
     content: "Finance";
 }
 
+#mode-academic:checked~.ask-box .mode-current::after {
+    content: "Academics";
+}
+
 #mode-search:checked~.ask-box label[for="mode-search"],
 #mode-research:checked~.ask-box label[for="mode-research"],
-#mode-finance:checked~.ask-box label[for="mode-finance"] {
+#mode-finance:checked~.ask-box label[for="mode-finance"],
+#mode-academic:checked~.ask-box label[for="mode-academic"] {
     color: var(--text-1);
     background: var(--hover);
 }
@@ -103,8 +111,29 @@
 
 #mode-search:checked~.ask-box .mode-ico.i-search,
 #mode-research:checked~.ask-box .mode-ico.i-research,
-#mode-finance:checked~.ask-box .mode-ico.i-finance {
+#mode-finance:checked~.ask-box .mode-ico.i-finance,
+#mode-academic:checked~.ask-box .mode-ico.i-academic {
     display: flex;
+}
+
+.mode-menu {
+    width: 206px;
+    padding: 4px;
+    border-radius: 12px;
+}
+
+.mode-menu .dd-item {
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 13.5px;
+}
+
+.mode-menu .dd-item .dd-left {
+    gap: 8px;
+}
+
+.mode-menu .dd-text small {
+    font-size: 11px;
 }
 
 .dd-menu.left {
@@ -120,7 +149,7 @@
 }
 
 .dd-text small {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-3);
 }
 
@@ -141,7 +170,7 @@
     gap: 6px;
     padding: 6px 11px;
     border-radius: 999px;
-    font-size: 12.5px;
+    font-size: 13.5px;
     font-weight: 500;
     color: var(--text-2);
     cursor: pointer;
@@ -169,7 +198,7 @@
     position: absolute;
     right: 0;
     bottom: calc(100% + 8px);
-    width: 288px;
+    width: 296px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -188,7 +217,7 @@
 
 .dd-head {
     padding: 9px 12px 7px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: .07em;
     text-transform: uppercase;
@@ -203,7 +232,7 @@
     border-radius: 9px;
     cursor: pointer;
     color: var(--text-2);
-    font-size: 13px;
+    font-size: 14px;
     transition: background .12s ease, color .12s ease;
 }
 
@@ -220,8 +249,8 @@
 }
 
 .dd-item .model-logo {
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     flex-shrink: 0;
 }
 
@@ -231,8 +260,8 @@
 }
 
 .model-dot {
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -258,7 +287,7 @@
 }
 
 .dd-badge {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
     padding: 1.5px 6px;
     border-radius: 5px;
@@ -317,8 +346,8 @@
 }
 
 .send-btn {
-    width: 34px;
-    height: 34px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;

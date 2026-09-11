@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <!-- MindSearch: 8-petal spark, theme ink -->
+  <g fill="#c2beb6" transform="translate(32 32)">
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(45)"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(90)"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(135)"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(225)"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(270)"/>
+    <ellipse cx="0" cy="-17.2" rx="5.15" ry="13.35" transform="rotate(315)"/>
+  </g>
+</svg>
