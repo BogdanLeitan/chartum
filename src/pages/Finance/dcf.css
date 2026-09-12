@@ -1,0 +1,47 @@
+.dcf-wrap .kpi-row { margin-bottom: 16px; }
+
+.dcf-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 220px;
+  padding: 8px 4px 0;
+}
+
+.dcf-bar {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  color: var(--text-3);
+}
+
+.dcf-bar i {
+  display: block;
+  width: 100%;
+  max-width: 56px;
+  border-radius: 6px 6px 2px 2px;
+  background: color-mix(in srgb, var(--up) 78%, #c4a35a);
+}
+
+.dcf-bar .bar-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.dcf-bar .bar-lbl { font-size: 11px; }
+
+.dcf-note {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-3);
+}
+
+@media (max-width: 760px) {
+  .dcf-bars { height: 180px; gap: 8px; }
+}

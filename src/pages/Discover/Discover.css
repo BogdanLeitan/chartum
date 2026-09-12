@@ -120,13 +120,19 @@ html.sidebar-collapsed .discover-head .ph-title {
 .discover-head .ph-nav {
   margin-left: 0;
   justify-content: center;
+  overflow: visible;
 }
 .discover-head .ph-link { cursor: pointer; }
 
-#disc-foryou:checked ~ .discover-head label[for="disc-foryou"] {
+#disc-topic-all:checked ~ .discover-head .ph-link[for="disc-topic-all"] {
   color: var(--text-1);
 }
-#disc-foryou:checked ~ .discover-head label[for="disc-foryou"]::after {
+#disc-topic-all:checked ~ .discover-head .ph-link[for="disc-topic-all"]::after,
+#disc-topic-markets:checked ~ .discover-head .topics-btn::after,
+#disc-topic-tech:checked ~ .discover-head .topics-btn::after,
+#disc-topic-crypto:checked ~ .discover-head .topics-btn::after,
+#disc-topic-macro:checked ~ .discover-head .topics-btn::after,
+#disc-topic-companies:checked ~ .discover-head .topics-btn::after {
   content: '';
   position: absolute;
   left: 10px;
@@ -137,9 +143,19 @@ html.sidebar-collapsed .discover-head .ph-title {
   background: var(--accent);
 }
 
+#disc-topic-markets:checked ~ .discover-head .topics-btn,
+#disc-topic-tech:checked ~ .discover-head .topics-btn,
+#disc-topic-crypto:checked ~ .discover-head .topics-btn,
+#disc-topic-macro:checked ~ .discover-head .topics-btn,
+#disc-topic-companies:checked ~ .discover-head .topics-btn,
+.topics-toggle:checked ~ .topics-btn {
+  color: var(--text-1);
+}
+
 .topics-dd { position: relative; height: 100%; }
 .topics-btn { gap: 5px; cursor: pointer; }
-.topics-btn svg { color: var(--text-3); }
+.topics-btn .topics-chev { color: var(--text-3); transition: transform .15s ease; }
+.topics-toggle:checked ~ .topics-btn .topics-chev { transform: rotate(180deg); }
 .topics-current::after { content: "Topics"; }
 #disc-topic-markets:checked ~ .discover-head .topics-current::after { content: "Markets"; }
 #disc-topic-tech:checked ~ .discover-head .topics-current::after { content: "Tech"; }
@@ -157,33 +173,87 @@ html.sidebar-collapsed .discover-head .ph-title {
 .topics-menu {
   display: none;
   position: absolute;
-  right: 0;
-  top: calc(100% + 8px);
-  width: 180px;
+  left: 50%;
+  top: calc(100% + 6px);
+  width: 228px;
+  padding: 8px 6px 6px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 6px;
+  border-radius: 14px;
+  transform: translateX(-50%);
   z-index: 100;
 }
 .topics-toggle:checked ~ .topics-menu { display: block; }
+
+.topics-heading {
+  padding: 6px 10px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+}
+
 .topics-item {
-  display: block;
-  padding: 8px 11px;
-  border-radius: 8px;
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 500;
   color: var(--text-2);
   cursor: pointer;
 }
-.topics-item:hover { background: var(--hover); color: var(--text-1); }
-#disc-topic-all:checked ~ .discover-head label[for="disc-topic-all"],
-#disc-topic-markets:checked ~ .discover-head label[for="disc-topic-markets"],
-#disc-topic-tech:checked ~ .discover-head label[for="disc-topic-tech"],
-#disc-topic-crypto:checked ~ .discover-head label[for="disc-topic-crypto"],
-#disc-topic-macro:checked ~ .discover-head label[for="disc-topic-macro"],
-#disc-topic-companies:checked ~ .discover-head label[for="disc-topic-companies"] {
+.topics-item:hover {
+  background: var(--hover);
+  color: var(--text-1);
+}
+.topics-ico {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-3);
+}
+.topics-item:hover .topics-ico { color: var(--text-2); }
+.topics-item::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+#disc-topic-all:checked ~ .discover-head .topics-item[for="disc-topic-all"],
+#disc-topic-markets:checked ~ .discover-head .topics-item[for="disc-topic-markets"],
+#disc-topic-tech:checked ~ .discover-head .topics-item[for="disc-topic-tech"],
+#disc-topic-crypto:checked ~ .discover-head .topics-item[for="disc-topic-crypto"],
+#disc-topic-macro:checked ~ .discover-head .topics-item[for="disc-topic-macro"],
+#disc-topic-companies:checked ~ .discover-head .topics-item[for="disc-topic-companies"] {
   color: var(--text-1);
   background: var(--hover);
+}
+#disc-topic-all:checked ~ .discover-head .topics-item[for="disc-topic-all"] .topics-ico,
+#disc-topic-markets:checked ~ .discover-head .topics-item[for="disc-topic-markets"] .topics-ico,
+#disc-topic-tech:checked ~ .discover-head .topics-item[for="disc-topic-tech"] .topics-ico,
+#disc-topic-crypto:checked ~ .discover-head .topics-item[for="disc-topic-crypto"] .topics-ico,
+#disc-topic-macro:checked ~ .discover-head .topics-item[for="disc-topic-macro"] .topics-ico,
+#disc-topic-companies:checked ~ .discover-head .topics-item[for="disc-topic-companies"] .topics-ico {
+  color: var(--text-1);
+}
+#disc-topic-all:checked ~ .discover-head .topics-item[for="disc-topic-all"]::after,
+#disc-topic-markets:checked ~ .discover-head .topics-item[for="disc-topic-markets"]::after,
+#disc-topic-tech:checked ~ .discover-head .topics-item[for="disc-topic-tech"]::after,
+#disc-topic-crypto:checked ~ .discover-head .topics-item[for="disc-topic-crypto"]::after,
+#disc-topic-macro:checked ~ .discover-head .topics-item[for="disc-topic-macro"]::after,
+#disc-topic-companies:checked ~ .discover-head .topics-item[for="disc-topic-companies"]::after {
+  opacity: 1;
 }
 
 /* For You — Perplexity story layout */

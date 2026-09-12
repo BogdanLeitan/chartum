@@ -67,6 +67,17 @@ function Sidebar() {
             Discover
           </Link>
 
+          <NavLink className={({ isActive }) => isActive ? "side-item active" : "side-item"} to="/finance" title="Finance">
+            <span className="side-ico ico-bars">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <rect x="3.6" y="13.2" width="4.6" height="7.4" rx="2.2" fill="currentColor" />
+                <rect x="9.7" y="8.2" width="4.6" height="12.4" rx="2.2" fill="currentColor" />
+                <rect x="15.8" y="4.4" width="4.6" height="16.2" rx="2.2" fill="currentColor" />
+              </svg>
+            </span>
+            Finance
+          </NavLink>
+
           <NavLink className={({ isActive }) => isActive ? "side-item active" : "side-item"} to="/extensions" title="Extensions">
             <span className="side-ico ico-ext">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">

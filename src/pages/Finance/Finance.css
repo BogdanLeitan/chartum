@@ -1,0 +1,131 @@
+@import "./insights-legacy.css";
+@import "./tools-legacy.css";
+@import "./charting.css";
+@import "./dcf.css";
+
+.fin-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.finance-head {
+  position: relative;
+  justify-content: center;
+  gap: 0;
+  padding: 0 18px;
+}
+
+.finance-head .ph-title {
+  position: absolute;
+  left: 18px;
+  z-index: 1;
+}
+
+.finance-head .header-sidebar-toggle {
+  position: absolute;
+  left: 18px;
+  z-index: 2;
+  margin-right: 0;
+}
+
+.app:has(.sidebar-collapse-cb:checked) .finance-head .ph-title,
+html.sidebar-collapsed .finance-head .ph-title {
+  left: 54px;
+}
+
+.finance-head .ph-nav {
+  margin-left: 0;
+  justify-content: center;
+}
+
+.finance-head .ph-link { cursor: pointer; }
+
+#fin-insights:checked ~ .finance-head label[for="fin-insights"],
+#fin-charting:checked ~ .finance-head label[for="fin-charting"],
+#fin-calendar:checked ~ .finance-head label[for="fin-calendar"],
+#fin-transcripts:checked ~ .finance-head label[for="fin-transcripts"],
+#fin-dcf:checked ~ .finance-head label[for="fin-dcf"],
+#fin-portfolio:checked ~ .finance-head label[for="fin-portfolio"] {
+  color: var(--text-1);
+}
+
+#fin-insights:checked ~ .finance-head label[for="fin-insights"]::after,
+#fin-charting:checked ~ .finance-head label[for="fin-charting"]::after,
+#fin-calendar:checked ~ .finance-head label[for="fin-calendar"]::after,
+#fin-transcripts:checked ~ .finance-head label[for="fin-transcripts"]::after,
+#fin-dcf:checked ~ .finance-head label[for="fin-dcf"]::after,
+#fin-portfolio:checked ~ .finance-head label[for="fin-portfolio"]::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+}
+
+.fin-panel { display: none; }
+#fin-insights:checked ~ .content .fin-insights,
+#fin-calendar:checked ~ .content .fin-calendar,
+#fin-dcf:checked ~ .content .fin-dcf,
+#fin-portfolio:checked ~ .content .fin-portfolio {
+  display: block;
+}
+
+#fin-charting:checked ~ .content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#fin-charting:checked ~ .content .fin-charting {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+#fin-transcripts:checked ~ .content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#fin-transcripts:checked ~ .content .fin-transcripts {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+#fin-transcripts:checked ~ .content .tx-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+#fin-transcripts:checked ~ .content .tx-stage,
+#fin-transcripts:checked ~ .content .tx-rail,
+#fin-transcripts:checked ~ .content .tx-panel {
+  min-height: 0;
+}
+
+#fin-transcripts:checked ~ .content .tx-rail,
+#fin-transcripts:checked ~ .content .tx-panel {
+  height: 100%;
+}
+
+.tx-co .logo-box {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+}
